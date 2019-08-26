@@ -11,7 +11,7 @@ version: "2"
 services:
   web:
     image: kimbtechnologies/php-nginx:latest
-    container_name: php_nginx
+    container_name: php-nginx
     ports:
       - "127.0.0.1:8080:80"
     volumes:
