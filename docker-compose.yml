@@ -1,5 +1,6 @@
 # please see file in readme
 # this file is only for testing/ development
+
 version: "2"
 
 services:
@@ -9,3 +10,5 @@ services:
       - "127.0.0.1:8080:80"
     build:
       context: .
+    volumes:
+     - ./init.sh:/startup-before.sh
