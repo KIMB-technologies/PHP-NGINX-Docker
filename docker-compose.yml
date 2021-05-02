@@ -9,6 +9,9 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     build:
+      args:
+        #- BASEIMAGE_VERSION=7
+        - BASEIMAGE_VERSION=8
       context: .
     volumes:
      - ./init.sh:/startup-before.sh
