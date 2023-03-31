@@ -1,5 +1,4 @@
-ARG BASEIMAGE_VERSION
-FROM php:${BASEIMAGE_VERSION}-fpm-alpine
+FROM php:fpm-alpine
 
 # install nginx
 RUN apk add --update --no-cache nginx \
