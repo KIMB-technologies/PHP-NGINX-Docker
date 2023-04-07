@@ -15,21 +15,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
-    # Init and check
-    
-    - name: Access to repository contents
-      uses: actions/checkout@v3
-    
+      
     - name: Check for new baseimage 
       id: check
       uses: lucacome/docker-image-update-checker@v1
       with:
         base-image: "${{env.BASE_IMAGE}}"
         image: "${{env.IMAGE_OWNER}}/${{env.IMAGE_NAME}}:latest"
-      if: github.event_name != 'push'
+      env:
+        DEBUG: true
+      #if: github.event_name != 'push'
         
-   # Build image
+    # Build image
+
+    - name: Access to repository contents
+      uses: actions/checkout@v3
         
     - name: Build the Docker image
       run: docker build . --file "Dockerfile" --tag "$IMAGE_OWNER/$IMAGE_NAME:latest"
