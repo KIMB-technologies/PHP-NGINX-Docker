@@ -2,7 +2,7 @@
 
 An easy to use php and nginx image for Docker.
 
-Currently build for AMD64, ARMv6, ARMv7 and ARM64 (v8).
+Currently available for AMD64, ARMv6, ARMv7 and ARM64 (v8).
 
 ## Docker Command
 
