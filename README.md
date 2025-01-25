@@ -1,6 +1,8 @@
 # PHP-NGINX-Docker
 
-An easy to use php and nginx image for docker.
+An easy to use php and nginx image for Docker.
+
+Currently available for AMD64, ARMv6, ARMv7 and ARM64 (v8).
 
 ## Docker Command
 
@@ -22,15 +24,14 @@ version: "2"
 
 services:
   web:
-    image: kimbtechnologies/php_nginx:latest # uses php 7.4
-    #image: kimbtechnologies/php_nginx:8-latest # uses php 8.*
+    image: kimbtechnologies/php_nginx:latest # uses php 8.*
     container_name: php_nginx
     ports:
       - "127.0.0.1:8080:80"
     volumes:
       - ./php/:/php-code/ # load custom php code
-	# - ./more-server-conf.conf:/etc/nginx/more-server-conf.conf:ro # add config options to the nginx conf (see file in repository for example)
-	# - ./init.sh:/startup-before.sh # script to be run before php, nginx startup (e.g. for system updates, ..., runs as root)
+      # - ./more-server-conf.conf:/etc/nginx/more-server-conf.conf:ro # add config options to the nginx conf (see file in repository for example)
+      # - ./init.sh:/startup-before.sh # script to be run before php, nginx startup (e.g. for system updates, ..., runs as root)
     restart: always
 
 ```
