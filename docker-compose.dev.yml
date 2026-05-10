@@ -1,0 +1,12 @@
+# please see file in readme
+# this file is only for testing/ development
+
+services:
+  web:
+    container_name: php_nginx
+    ports:
+      - "127.0.0.1:8080:80"
+    build:
+      context: .
+    volumes:
+     - ./init.sh:/startup-before.sh
