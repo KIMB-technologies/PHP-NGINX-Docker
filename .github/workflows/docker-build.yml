@@ -51,7 +51,7 @@ jobs:
     # Multi platform image build and push
 
     - name: Get PHP version (and write to VERSION file)
-      run: php_v=$(docker run --rm "BASE_IMAGE" sh -c 'echo "$PHP_VERSION"'); php_v=$(echo $php_v | grep -o '[0-9\.]*'); echo "latest" > ./VERSION; echo "php-$php_v" >> ./VERSION; echo "" >> ./VERSION;
+      run: php_v=$(docker run --rm "$BASE_IMAGE" sh -c 'echo "$PHP_VERSION"'); php_v=$(echo $php_v | grep -o '[0-9\.]*'); echo "latest" > ./VERSION; echo "php-$php_v" >> ./VERSION; echo "" >> ./VERSION;
       if: ${{ (github.event_name == 'push') || (steps.check.outputs.needs-updating == 'true') }}
 
     - name: Get main tag (from VERSION file)
