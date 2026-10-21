@@ -6,6 +6,9 @@ RUN apk add --update --no-cache nginx \
 	&& mkdir -p /var/log/nginx && chown -R www-data:www-data /var/log/nginx \
 	&& mkdir -p /var/tmp/nginx && chown -R www-data:www-data /var/tmp/nginx/
 
+# set fpm to listen locally 
+RUN echo -e "[www]\n listen = 127.0.0.1:9000\n" > /usr/local/etc/php-fpm.d/zz-local-only.conf
+
 # add config and php scripts
 WORKDIR /php-code/
 COPY --chown=www-data:www-data ./php/ /php-code/
