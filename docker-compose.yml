@@ -5,7 +5,15 @@ services:
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - ./php/:/php-code/ # load custom php code
-      # - ./more-server-conf.conf:/etc/nginx/more-server-conf.conf:ro # add config options to the nginx conf (see file in repository for example)
-      # - ./init.sh:/startup-before.sh # script to be run before php, nginx startup (e.g. for system updates, ..., runs as root)
+      # mount the web root with PHP into the container, provide your PHP app here
+      - ./php/:/php-code/ 
+      # customize the NGINX config
+      #    at the server {} block level 
+      #- ./nginx/more-server-conf.conf:/etc/nginx/more-server-conf.conf:ro
+      #    at the http {} block level
+      #- ./nginx/more-http-conf.conf:/etc/nginx/more-http-conf.conf:ro
+      #    at the root config level
+      #- ./nginx/more-root-conf.conf:/etc/nginx/more-root-conf.conf:ro
+      # define a sh script to be run before php and NGINX start (e.g. for system setups, ...; runs as root)
+      #- ./startup-before.sh:/startup-before.sh:ro
     restart: unless-stopped

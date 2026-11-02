@@ -9,4 +9,4 @@ services:
     build:
       context: .
     volumes:
-     - ./init.sh:/startup-before.sh
+     - ./startup-before.sh:/startup-before.sh

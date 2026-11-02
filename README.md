@@ -1,6 +1,6 @@
 # PHP-NGINX-Docker
 
-An easy to use php and nginx image for Docker.
+An easy to use php and NGINX image for Docker.
 
 Currently available for AMD64, ARMv6, ARMv7 and ARM64 (v8).
 
@@ -16,5 +16,5 @@ docker run -p 8080:80 kimbtechnologies/php_nginx
 
 ## Docker Compose
 
-Example file for a Docker Compose setup with own php code: [`docker-compose.yml`](./docker-compose.yml)
+Example file for a Docker Compose setup to use with your own php code: [`docker-compose.yml`](./docker-compose.yml)
 
