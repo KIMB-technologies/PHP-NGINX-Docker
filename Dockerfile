@@ -6,6 +6,10 @@ RUN apk add --update --no-cache nginx \
 	&& mkdir -p /var/log/nginx && chown -R www-data:www-data /var/log/nginx \
 	&& mkdir -p /var/tmp/nginx && chown -R www-data:www-data /var/tmp/nginx/
 
+# add php mbstring, not default since 8.6 https://github.com/docker-library/php/pull/1654#discussion_r2949602747
+RUN apk add --update --no-cache oniguruma-dev \
+    && docker-php-ext-install mbstring 
+
 # set fpm to listen locally, allow status ping to fpm 
 RUN echo -e "\n[www]\n listen = 127.0.0.1:9000\n" > /usr/local/etc/php-fpm.d/zz-local-only.conf \
 	&& echo -e "\n[www]\nping.path = /healthz\nping.response = healthy\naccess.suppress_path[] = /healthz\n" > /usr/local/etc/php-fpm.d/zz-healthz.conf
